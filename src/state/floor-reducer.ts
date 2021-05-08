@@ -22,7 +22,7 @@ export const floorReducer = (state: FloorStateType = initialState, action: Actio
     switch (action.type) {
 
         case 'ADD-FLOOR': {
-
+debugger
             const stateCopy = {...state}
             const newFloor: FloorType = {
                 Floorid: v1(),

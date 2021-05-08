@@ -16,7 +16,7 @@ export function HouseCount(props: Propstype) {
 
     return (
         <StyledDiv>
-            <span>Houses {props.count}</span>
+            <span>House {props.count}</span>
         </StyledDiv>
     );
 }
