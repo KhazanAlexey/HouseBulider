@@ -7,24 +7,22 @@ import {FloorStateType, FloorType} from "../state/floor-reducer";
 import styled from 'styled-components'
 
 type PropsType = {
-    color: string
-    floors: number
     key: any
     f: Array<FloorType>
 }
 
 function House(props: PropsType) {
+
+    // const col=props.f[0].color
     return (
 
         <div className={style.house}>
             <Roof/>
             {props.f.map(f => {
-
-
-                    return <Floor  color={f.color}/>
-                }
+                    return f.door ?  <Hall color={f.color}/>:<Floor key={f.Floorid} color={f.color}/>
+                       }
             )}
-            <Hall/>
+           
 
         </div>
     );

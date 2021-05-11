@@ -5,12 +5,17 @@ import SliderWithNum from "./SliderWithNum/SliderWithNum";
 import SuperRange from "./utils/SuperRange";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../state/store";
-import {addHouseAC, h1, HouseType} from "../state/houses-reducer";
-import {addFloorAC, FloorType} from "../state/floor-reducer";
-import {useState} from 'react';
+import {addFloorsAC, addHouseAC, h1, HouseType} from "../state/houses-reducer";
+import {addFloorAC, changeColorAC, floorReducer, FloorType} from "../state/floor-reducer";
+import {useEffect, useState} from 'react';
 import {v1} from "uuid";
+import SuperSelect from "./utils/SuperSelect";
 
-type Propstype = {}
+type Propstype = {
+    houseID: string
+    floorsCount: number
+}
+const arrColor = ['', 'green', 'black', 'blue', 'white', 'red']
 
 
 export function Controls(props: Propstype) {
@@ -33,27 +38,42 @@ export function Controls(props: Propstype) {
       margin-block-start: 0;
       margin-block-end: 0;
     `
-    const [flors, setFlors] = useState(1)
+    const [color, onChangecolor] = useState('')
+
+    const [floors, setFlors] = useState(1
+    )
+
     const dispatch = useDispatch()
-
     const housecount = useSelector<AppRootStateType, Array<HouseType>>(state => state.houses).length
+    const floorsCount = useSelector<AppRootStateType, any>(state => state.floor[props.houseID]).length
+    const onChangeOption = (col: string) => {
+        dispatch(changeColorAC(props.houseID, col))
+
+        onChangecolor(col)
+    }
+    useEffect(() => {
+            dispatch(addFloorsAC(props.houseID, floors))
+        },
+        [floors, setFlors])
     const onChangeRange = (value: number) => {
+        dispatch(addFloorAC(props.houseID, "black", value, false))
         setFlors(value)
-    for (let i = 0; i <= value; i++) {
-
-        dispatch(addFloorAC(h1, "black"))
-}
-
-
     }
 
     return (
         <StyledDiv>
+
             <FloorsControl>
-                <HouseCount count={housecount}/>
-                <SliderWithNum flors={flors}/>
-                <SuperRange onChangeRange={onChangeRange} max={5} value={flors} min={1}/>
+                <HouseCount count={"1"}/>
+                <SliderWithNum flors={floorsCount}/>
+                <SuperRange onChangeRange={onChangeRange} max={5} value={floors} min={1}/>
             </FloorsControl>
+            <SuperSelect
+                options={arrColor}
+                value={color}
+                onChangeOption={onChangeOption}
+            />
+
         </StyledDiv>
     );
 }

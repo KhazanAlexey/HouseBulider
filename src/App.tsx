@@ -1,14 +1,23 @@
 import s from './App.module.scss';
 import House from "./House/House";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./state/store";
-import {HouseType} from "./state/houses-reducer";
-import {FloorType} from "./state/floor-reducer";
+import {addHouseAC, HouseType, setHallColorAC} from "./state/houses-reducer";
 import Controls from "./Controls/Controls";
+import {v1} from "uuid";
+import {addFloorAC} from "./state/floor-reducer";
 
 function App() {
+    const dispatch = useDispatch()
     const house = useSelector<AppRootStateType, Array<HouseType>>(state => state.houses)
     const floors = useSelector<AppRootStateType, any>(state => state.floor)
+    const newHouseId = v1()
+    const addHouseHandler = () => {
+        dispatch(addHouseAC(newHouseId,1))
+        dispatch(addFloorAC(newHouseId, '', 1, true))
+
+    }
+
     return (
         <div className={s.App}>
             <div className={s.haederWrapper}></div>
@@ -22,22 +31,23 @@ function App() {
                         Houses List
                     </div>
                     <div className={s.controls}>
-                        <Controls/>
+                        {house.map(c => <Controls floorsCount={c.floors} houseID={c.houseID}/>)}
 
 
-                        <div>house</div>
-                        <div>house</div>
-                        <div>house</div>
-                        <div>house</div>
+
                     </div>
                     <div className={s.footerControls}>
-                        <button>Add house</button>
+                        <button onClick={addHouseHandler}>Add house</button>
                     </div>
                 </div>
                 <div className={s.placeForHouses}>
                     {house.map(h => {
                         let f = floors[h.houseID]
-                        return <House floors={h.floors} f={f} key={h.houseID} color={h.color}/>
+
+
+                        return <House f={f} key={h.houseID}/>
+
+
                     })
                     }
                 </div>

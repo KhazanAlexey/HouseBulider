@@ -1,36 +1,68 @@
 import {v1} from "uuid";
-import House from "../House/House";
-import {h1, h2, h3} from "./houses-reducer";
+import {AddHouseTypeAC, h1, h2} from "./houses-reducer";
+import Floor from "../House/Floor/Floor";
 
 export type FloorType = {
     Floorid: string
     color: string
+    door:boolean
 }
 
 export type FloorStateType = {
     [key: string]: Array<FloorType>
 }
 const initialState: FloorStateType = {
-    [h1]: [{color: "green", Floorid: "green"},{color: 'red', Floorid: "green"}],
-    [h2]: [{color: 'yellow', Floorid: "green"}],
-    [h3]: [{color: 'red', Floorid: "green"}],
+[h1]: [{color:'white',Floorid:h2,door:true}]
+
 
 }
-type ActionsType = ReturnType<typeof addFloorAC>
+
 
 export const floorReducer = (state: FloorStateType = initialState, action: ActionsType): FloorStateType => {
     switch (action.type) {
-
-        case 'ADD-FLOOR': {
-debugger
+        case 'CHANGE-COLOR': {
             const stateCopy = {...state}
-            const newFloor: FloorType = {
-                Floorid: v1(),
-                color: action.color
+            let currentHouseFloors = stateCopy[action.Houseid];
+
+           // let newColoredFloor= currentHouseFloors.map(f=>{if(f.color){
+           //     return{
+           //         ...f,color: action.color
+           //     }
+           // } else
+           //  return    { ...f}
+           // })
+            let newColoredFloor= currentHouseFloors.map(f=>{
+                    return{
+                        ...f,color: action.color
+                    }})
+
+            stateCopy[action.Houseid]=[...newColoredFloor]
+            return stateCopy
+        }
+        case 'ADD-HOUSE': {
+            return {
+                ...state,
+                [action.houseID]: []
             }
-            const floor = stateCopy[action.Houseid];
-            const floors = [newFloor, ...floor];
-            stateCopy[action.Houseid] = floors;
+        }
+        case 'ADD-FLOOR': {
+            const stateCopy = {...state}
+
+            let currentHouseFloors = stateCopy[action.Houseid];
+            if (action.florsValue < currentHouseFloors.length) {
+                currentHouseFloors.shift()
+
+            } else {
+                const newFloor: FloorType = {
+                    Floorid: v1(),
+                    color: '',
+                    door:action.door
+                }
+                const floors = [newFloor, ...currentHouseFloors];
+                stateCopy[action.Houseid] = floors;
+            }
+
+
             return stateCopy;
         }
         default:
@@ -38,7 +70,15 @@ debugger
     }
 }
 
-export const addFloorAC = (Houseid: string, color: string) => {
-    return {type: 'ADD-FLOOR', Houseid, color}
-}
+
+type ActionsType = ReturnType<typeof changeColorAC> | ReturnType<typeof addFloorAC> |AddHouseTypeAC
+
+export const addFloorAC = (Houseid: string, color: string, florsValue: number,door:boolean) => ({
+    type: 'ADD-FLOOR',
+    Houseid,
+    color,
+    florsValue,
+    door
+} as const)
+export const changeColorAC = (Houseid: string, color: string) => ({type: 'CHANGE-COLOR', Houseid, color} as const)
 
