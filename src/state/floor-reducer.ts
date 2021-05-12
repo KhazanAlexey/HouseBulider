@@ -52,7 +52,7 @@ export const floorReducer = (state: FloorStateType = initialState, action: Actio
             if (action.florsValue < currentHouseFloors.length) {
                 currentHouseFloors.shift()
 
-            } else {
+            } else  {
                 const newFloor: FloorType = {
                     Floorid: v1(),
                     color: '',

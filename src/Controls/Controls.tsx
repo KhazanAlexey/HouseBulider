@@ -14,6 +14,7 @@ import SuperSelect from "./utils/SuperSelect";
 type Propstype = {
     houseID: string
     floorsCount: number
+    housenumber:number
 }
 const arrColor = ['', 'green', 'black', 'blue', 'white', 'red']
 
@@ -45,7 +46,7 @@ export function Controls(props: Propstype) {
 
     const dispatch = useDispatch()
     const housecount = useSelector<AppRootStateType, Array<HouseType>>(state => state.houses).length
-    const floorsCount = useSelector<AppRootStateType, any>(state => state.floor[props.houseID]).length
+    const floorsCount = useSelector<AppRootStateType, Array<FloorType>>(state => state.floor[props.houseID]).length
     const onChangeOption = (col: string) => {
         dispatch(changeColorAC(props.houseID, col))
 
@@ -56,6 +57,12 @@ export function Controls(props: Propstype) {
         },
         [floors, setFlors])
     const onChangeRange = (value: number) => {
+        if (value < 1) {
+            return;
+        }
+
+        // early return
+
         dispatch(addFloorAC(props.houseID, "black", value, false))
         setFlors(value)
     }
@@ -64,9 +71,9 @@ export function Controls(props: Propstype) {
         <StyledDiv>
 
             <FloorsControl>
-                <HouseCount count={"1"}/>
+                <HouseCount count={props.housenumber}/>
                 <SliderWithNum flors={floorsCount}/>
-                <SuperRange onChangeRange={onChangeRange} max={5} value={floors} min={1}/>
+                <SuperRange onChangeRange={onChangeRange} max={5} step={1} value={floors} min={1}/>
             </FloorsControl>
             <SuperSelect
                 options={arrColor}

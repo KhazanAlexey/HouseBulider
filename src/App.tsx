@@ -20,7 +20,7 @@ function App() {
 
     return (
         <div className={s.App}>
-            <div className={s.haederWrapper}></div>
+            <div className={s.haederWrapper}>eeeeee</div>
             <header className={s.header}>
                 City Byilder
             </header>
@@ -31,7 +31,7 @@ function App() {
                         Houses List
                     </div>
                     <div className={s.controls}>
-                        {house.map(c => <Controls floorsCount={c.floors} houseID={c.houseID}/>)}
+                        {house.map((c,count) => <Controls housenumber={count+1} floorsCount={c.floors} houseID={c.houseID}/>)}
 
 
 
