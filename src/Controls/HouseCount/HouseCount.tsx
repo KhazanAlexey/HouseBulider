@@ -1,4 +1,3 @@
-import s from './Floor.module.scss'
 import styled from "styled-components";
 
 type Propstype = {

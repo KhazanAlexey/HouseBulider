@@ -1,4 +1,3 @@
-import s from './Floor.module.scss'
 import styled from "styled-components";
 
 type Propstype = {
@@ -8,7 +7,7 @@ flors:number
 
 export function SliderWithNum(props: Propstype) {
     const StyledDiv = styled.div`
-      width:30%;
+      width:50%;
       height: 50px; 
       display: flex;
       flex-direction: row;

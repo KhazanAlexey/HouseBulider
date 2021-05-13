@@ -1,8 +1,15 @@
 .select{
 width: 100px;
     cursor: pointer;
+
 }
 .option:checked{
     background:#4CAF50 ;
+
+}
+@media screen and (max-width: 180px) {
+    .select{
+        width:100%
+    }
 
 }

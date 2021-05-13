@@ -1,6 +1,5 @@
 import {v1} from "uuid";
 import {AddHouseTypeAC, h1, h2} from "./houses-reducer";
-import Floor from "../House/Floor/Floor";
 
 export type FloorType = {
     Floorid: string
@@ -40,6 +39,16 @@ export const floorReducer = (state: FloorStateType = initialState, action: Actio
             stateCopy[action.Houseid] = [...newColoredFloor]
             return stateCopy
         }
+        case "CHANGE-COLOR-FLOOR": {
+            const stateCopy = {...state}
+            let currentHouseFloors = stateCopy[action.Houseid];
+            let newColoredFloors=currentHouseFloors.map(f=>
+                f.color=="white"? {...f,color: action.color}:{...f}
+            )
+
+            stateCopy[action.Houseid] = [...newColoredFloors]
+            return stateCopy
+        }
         case 'ADD-HOUSE': {
             return {
                 ...state,
@@ -56,7 +65,7 @@ export const floorReducer = (state: FloorStateType = initialState, action: Actio
             } else {
                 const newFloor: FloorType = {
                     Floorid: v1(),
-                    color: '',
+                    color: action.color,
                     door: action.door
                 }
                 const floors = [newFloor, ...currentHouseFloors];
@@ -72,7 +81,8 @@ export const floorReducer = (state: FloorStateType = initialState, action: Actio
 }
 
 
-type ActionsType = ReturnType<typeof changeColorAC> | ReturnType<typeof addFloorAC> |AddHouseTypeAC
+type ActionsType = ReturnType<typeof changeColorAC> | ReturnType<typeof addFloorAC> |AddHouseTypeAC |
+    ReturnType<typeof changeColorFloorAC>
 
 export const addFloorAC = (Houseid: string, color: string, florsValue: number,door:boolean) => ({
     type: 'ADD-FLOOR',
@@ -82,4 +92,5 @@ export const addFloorAC = (Houseid: string, color: string, florsValue: number,do
     door
 } as const)
 export const changeColorAC = (Houseid: string, color: string) => ({type: 'CHANGE-COLOR', Houseid, color} as const)
+export const changeColorFloorAC = (Houseid: string, color: string) => ({type: 'CHANGE-COLOR-FLOOR', Houseid, color} as const)
 

@@ -1,23 +1,20 @@
-import s from './Floor.module.scss'
 import styled from "styled-components";
 import HouseCount from "./HouseCount/HouseCount";
 import SliderWithNum from "./SliderWithNum/SliderWithNum";
 import SuperRange from "./utils/SuperRange";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../state/store";
-import {addFloorsAC, addHouseAC, h1, HouseType} from "../state/houses-reducer";
-import {addFloorAC, changeColorAC, floorReducer, FloorType} from "../state/floor-reducer";
-import {useEffect, useState} from 'react';
-import {v1} from "uuid";
+import {addFloorAC, changeColorAC, changeColorFloorAC, FloorType} from "../state/floor-reducer";
 import SuperSelect from "./utils/SuperSelect";
+import React from "react";
+import { v1 } from "uuid";
 
 type Propstype = {
     houseID: string
-    floorsCount: number
-    housenumber:number
+    housenumber: number
 }
-const arrColor = ['', 'green', 'black', 'blue', 'white', 'red']
-
+const arrColor = ['white', 'green', 'black', 'blue', 'red']
+const arrColorFloor = ['white', 'green', 'black', 'blue', 'red']
 
 export function Controls(props: Propstype) {
     const StyledDiv = styled.div`
@@ -25,11 +22,15 @@ export function Controls(props: Propstype) {
       border: 1px solid;
       display: flex;
       flex-direction: row;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
-    `
+      position: relative;
+      @media screen and (max-width: 664px) {
+        flex-direction: column;
+      }
+          `
     const FloorsControl = styled.div`
-      width: 50%;
+      width: 33%;
       height: 100%;
       border: 1px solid;
       display: flex;
@@ -37,51 +38,61 @@ export function Controls(props: Propstype) {
       justify-content: flex-start;
       align-items: flex-start;
       margin-block-start: 0;
-      margin-block-end: 0;
-    `
-    const [color, onChangecolor] = useState('')
+      @media screen and (max-width: 664px) {
+        width: 100%;
+      }
+     
 
-    const [floors, setFlors] = useState(1
-    )
+    `
+    const Buttonwrapper = styled.div`
+      margin: 3px;
+    `
 
     const dispatch = useDispatch()
-    const housecount = useSelector<AppRootStateType, Array<HouseType>>(state => state.houses).length
     const floorsCount = useSelector<AppRootStateType, Array<FloorType>>(state => state.floor[props.houseID]).length
+    const houseColor = useSelector<AppRootStateType, any>(state => state.floor[props.houseID][0].color)
+    const floorColor = useSelector<AppRootStateType, any>(state => state.floor[props.houseID][state.floor[props.houseID].length-1].color)
     const onChangeOption = (col: string) => {
         dispatch(changeColorAC(props.houseID, col))
-
-        onChangecolor(col)
     }
-    useEffect(() => {
-            dispatch(addFloorsAC(props.houseID, floors))
-        },
-        [floors, setFlors])
+
+    ///floor color set
+    const onChangeColorFloor = (col: string) => {
+        dispatch(changeColorFloorAC(props.houseID, col))
+    }
+
     const onChangeRange = (value: number) => {
         if (value < 1) {
             return;
-            
         }
-
+// let f1=v1()
         // early return
 
-        dispatch(addFloorAC(props.houseID, "black", value, false))
-        setFlors(value)
+        dispatch(addFloorAC(props.houseID, "white", value, false))
+        // dispatch(changeColorAC(props.houseID, houseColor))
     }
-
     return (
         <StyledDiv>
 
             <FloorsControl>
                 <HouseCount count={props.housenumber}/>
                 <SliderWithNum flors={floorsCount}/>
-                <SuperRange onChangeRange={onChangeRange} max={9} step={1} value={floors} min={1}/>
-            </FloorsControl>
-            <SuperSelect
-                options={arrColor}
-                value={color}
-                onChangeOption={onChangeOption}
-            />
+                <SuperRange onChangeRange={onChangeRange} max={9} step={1} value={floorsCount} min={1}/>
 
+            </FloorsControl>
+            <div><span>color house:</span> <SuperSelect
+                options={arrColor}
+                value={floorColor}
+                onChangeOption={onChangeOption}
+            /></div>
+            <div><span>color floor: </span><SuperSelect
+                options={arrColorFloor}
+                value={houseColor}
+                onChangeOption={onChangeColorFloor}
+            /></div>
+            <Buttonwrapper>
+                <button>X</button>
+            </Buttonwrapper>
         </StyledDiv>
     );
 }

@@ -15,18 +15,14 @@ type RemoveHouseTypeAC = {
     type: 'REMOVE-HOUSE'
     houseID: any
 }
-type SetHallColorTypeAC = {
-    type: 'SETCOLOR-HALL'
-    houseID: string
-    hallcolor: string
-}
+
 type addFloorsAC={
     type: 'ADD-FLOORS',
     houseID: string
     floors: number
 }
 type ActionsTypes = AddHouseTypeAC |
-    RemoveHouseTypeAC | SetHallColorTypeAC |addFloorsAC
+    RemoveHouseTypeAC | addFloorsAC
 
 export const h1 = v1()
 
@@ -62,10 +58,4 @@ export const addHouseAC = (houseID: string,floors:number): AddHouseTypeAC => {
 }
 export const removeHouseAC = (houseID: string) => {
     return {type: 'REMOVE-HOUSE', houseID}
-}
-export const setHallColorAC = (houseID: any, hallcolor: string) => {
-    return {type: 'SETCOLOR-HALL', houseID, hallcolor}
-}
-export const addFloorsAC = (houseID: any, floors:number) => {
-    return {type: 'ADD-FLOORS', houseID, floors}
 }

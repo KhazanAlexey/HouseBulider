@@ -1,4 +1,3 @@
-import hallstyle from './hall.module.scss';
 import Window from "../Floor/Window/Window";
 import Door from "./Door/Door";
 import styled from "styled-components";

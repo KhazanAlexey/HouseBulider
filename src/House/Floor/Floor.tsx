@@ -1,4 +1,3 @@
-import s from './Floor.module.scss'
 import Window from "../Floor/Window/Window";
 import styled from "styled-components";
 
@@ -10,7 +9,7 @@ type Propstype = {
 export function Floor(props: Propstype) {
     const StyledDiv = styled.div`
       width: 200px;
-      height: 100px; 
+      height: 100px;
       background: ${props.color};;
       border-right: 3px solid black;
       border-left: 3px solid black;
@@ -18,7 +17,8 @@ export function Floor(props: Propstype) {
       flex-direction: row;
       justify-content: space-around;
       align-items: center;
-          `
+    
+    `
 
     return (
         <StyledDiv>
