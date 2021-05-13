@@ -13,7 +13,8 @@
     color: #6d1e1e;
     line-height: 70px;
     padding: 0 0 0 20px;
-
+    font-size: large;
+    font-weight: bold;
   }
 
   .body {
@@ -32,18 +33,23 @@
       border: 1px solid;
       border-radius: 3px;
       align-self: flex-start;
+      box-sizing: border-box;
+
       @media screen and (max-width: 363px) {
         width: 100%;
       }
+
       .title {
         width: 100%;
-        border-bottom: 1px solid;
+        border-bottom: 1px solid black;
         min-height: 40px;
         background-color: #bbbaba;
-        color: #6d1e1e;
         line-height: 40px;
         padding: 0 0 0 20px;
-
+        -moz-border-radius-topleft: 3px;
+        -moz-border-radius-topright: 3px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
       }
 
       .controls {
@@ -55,16 +61,19 @@
         display: flex;
         justify-content: center;
         padding: 0;
-        border-bottom: 0;
-        border-top: 1px solid;
-
+        border-bottom: none;
+        border-top: 1px solid black;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
         @extend .title
-
 
 
       }
     }
-    .placeForHouses{
+
+    .placeForHouses {
       //border: 1px solid;
       width: 70%;
       margin-left: 30px;
@@ -76,3 +85,4 @@
   }
 
 }
+

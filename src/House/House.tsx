@@ -3,28 +3,28 @@ import style from './House.module.scss'
 import Hall from "./Hall/Hall";
 import Floor from "./Floor/Floor";
 import { FloorType} from "../state/floor-reducer";
+import React from "react";
 
 type PropsType = {
-    key: any
     f: Array<FloorType>
     houseNumber:number
 
 }
-
-function House(props: PropsType) {
-
+const House =(props: PropsType)=>{
     return (
 
         <div className={style.house}>
             <Roof/>
             {props.f.map(f => {
-                    return f.door ?  <Hall houseNumber={props.houseNumber} color={f.color}/>:<Floor key={f.Floorid} color={f.color}/>
+
+                    return f.door ?  <Hall key={f.Floorid} houseNumber={props.houseNumber} color={f.color}/>:<Floor key={f.Floorid} color={f.color}/>
                        }
             )}
-           
+
 
         </div>
     );
 }
+
 
 export default House;

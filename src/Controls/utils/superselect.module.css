@@ -4,7 +4,9 @@ width: 100px;
 
 }
 .option:checked{
-    background:#4CAF50 ;
+    background:#04AA6D;
+    opacity: 1;
+
 
 }
 @media screen and (max-width: 180px) {

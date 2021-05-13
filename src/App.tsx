@@ -6,7 +6,7 @@ import {addHouseAC, HouseType,} from "./state/houses-reducer";
 import Controls from "./Controls/Controls";
 import {v1} from "uuid";
 import {addFloorAC} from "./state/floor-reducer";
-import {useCallback, useEffect,  useState} from "react";
+import { useEffect,  useState} from "react";
 
 function App() {
     const lastnum = useSelector<AppRootStateType, number>(state => state.houses[state.houses.length-1].houseNumber)
@@ -21,16 +21,16 @@ function App() {
     const house = useSelector<AppRootStateType, Array<HouseType>>(state => state.houses)
     const floors = useSelector<AppRootStateType, any>(state => state.floor)
     const newHouseId = v1()
-
+const floorId=v1()
     function num() {
         setnumberHouse(numberHouse + 1)
     }
 
-    const addHouseHandler = useCallback(() => {
+    const addHouseHandler = () => {
         num()
         dispatch(addHouseAC(newHouseId, numberHouse))
-        dispatch(addFloorAC(newHouseId, 'white', 1, true))
-    }, [newHouseId, numberHouse])
+        dispatch(addFloorAC(newHouseId, 'white', 1, true,floorId))
+    }
 
     return (
         <div className={s.App}>
@@ -44,9 +44,9 @@ function App() {
                         Houses List
                     </div>
                     <div className={s.controls}>
-                        {house.map((c, count) => {
+                        {house.map((c) => {
 
-                            return <Controls key={c.houseID} houseNumber={c.houseNumber} housenumber={count + 1}
+                            return <Controls key={c.houseID} houseNumber={c.houseNumber}
                                              houseID={c.houseID}/>
                         })}
 
@@ -61,7 +61,7 @@ function App() {
                         let f = floors[h.houseID]
 
 
-                        return <House f={f} houseNumber={h.houseNumber} key={h.houseID}/>
+                        return <House key={h.houseID} f={f} houseNumber={h.houseNumber} />
 
 
                     })

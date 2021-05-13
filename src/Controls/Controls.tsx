@@ -6,19 +6,18 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../state/store";
 import {addFloorAC, changeColorAC, changeColorFloorAC, FloorType} from "../state/floor-reducer";
 import SuperSelect from "./utils/SuperSelect";
-import React from "react";
-import { removeHouseAC } from "../state/houses-reducer";
+import React, {useCallback} from "react";
+import {removeHouseAC} from "../state/houses-reducer";
+import {v1} from "uuid";
 
 type Propstype = {
     houseID: string
-    housenumber: number
-    houseNumber:number
+    houseNumber: number
 }
-const arrColor = ['white', 'green', 'black', 'blue', 'red']
-const arrColorFloor = ['white', 'green', 'black', 'blue', 'red']
-
-export function Controls(props: Propstype) {
-    const StyledDiv = styled.div`
+const arrColor = ['white','orange', 'green', 'black', 'blue', 'red']
+const arrColorFloor = ['white','orange', 'green', 'black', 'blue', 'red']
+const floorId=v1()
+const StyledDiv = styled.div`
       width: 100%;
       display: flex;
       flex-direction: row;
@@ -27,12 +26,12 @@ export function Controls(props: Propstype) {
       position: relative;
       @media screen and (max-width: 729px) {
         flex-direction: column;
-        .select{
+        .select {
           width: 100px;
         }
       }
-          `
-    const FloorsControl = styled.div`
+    `;
+const FloorsControl = styled.div`
       max-width: 100px;
       min-width: 100px;
       height: 100%;
@@ -44,41 +43,48 @@ export function Controls(props: Propstype) {
       @media screen and (max-width: 729px) {
         width: 100%;
         max-width: 100%;
-
       }
-     
-
     `
-    const Buttonwrapper = styled.div`
+const Buttonwrapper = styled.div`
       margin: 3px;
     `
+const Controls= (props: Propstype)=> {
+
+
+
 
     const dispatch = useDispatch()
     const floorsCount = useSelector<AppRootStateType, Array<FloorType>>(state => state.floor[props.houseID]).length
-    const houseColor = useSelector<AppRootStateType, any>(state => state.floor[props.houseID][0].color)
-    const floorColor = useSelector<AppRootStateType, any>(state => state.floor[props.houseID][state.floor[props.houseID].length-1].color)
-    const onChangeOption = (col: string) => {
+    const houseColor = useSelector<AppRootStateType, string>(state => state.floor[props.houseID][0].color)
+    const floorColor = useSelector<AppRootStateType, string>(state => state.floor[props.houseID][state.floor[props.houseID].length - 1].color)
+    ///set color house
+    const onChangeOption = useCallback((col: string) => {
         dispatch(changeColorAC(props.houseID, col))
-    }
+    }, [props.houseID,dispatch])
 
-    ///floor color set
-    const onChangeColorFloor = (col: string) => {
+
+    ///set color floor
+    const onChangeColorFloor = useCallback((col: string) => {
         dispatch(changeColorFloorAC(props.houseID, col))
-    }
+    }, [props.houseID,dispatch])
 
-    const onChangeRange = (value: number) => {
-        if (value < 1) {
-            return;
+    ///add or reduce floor
+    const onChangeRange =(value: number) => {
+            if (value < 1) {
+                return;
+            }
+
+            dispatch(addFloorAC(props.houseID, "white", value, false,floorId))
+ // if you want all floors same color just use next line
+            // dispatch(changeColorAC(props.houseID, houseColor))
         }
-// let f1=v1()
-        // early return
-
-        dispatch(addFloorAC(props.houseID, "white", value, false))
-        // dispatch(changeColorAC(props.houseID, houseColor))
-    }
-    const delHouse=()=>{
+    ///removeHouse
+    const delHouse =useCallback(() => {
         dispatch(removeHouseAC(props.houseID))
-    }
+    },[props.houseID,dispatch])
+
+
+
     return (
         <StyledDiv>
 
@@ -104,5 +110,7 @@ export function Controls(props: Propstype) {
         </StyledDiv>
     );
 }
+
+
 
 export default Controls

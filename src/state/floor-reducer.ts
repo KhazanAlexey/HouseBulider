@@ -11,7 +11,7 @@ export type FloorStateType = {
     [key: string]: Array<FloorType>
 }
 const initialState: FloorStateType = {
-[h1]: [{color:'white',Floorid:h2,door:true}]
+[h1]: [{color:'',Floorid:h2,door:true}]
 
 
 }
@@ -43,7 +43,7 @@ export const floorReducer = (state: FloorStateType = initialState, action: Actio
             const stateCopy = {...state}
             let currentHouseFloors = stateCopy[action.Houseid];
             let newColoredFloors=currentHouseFloors.map(f=>
-                f.color==="white"? {...f,color: action.color}:{...f}
+                f.color==='white'? {...f,color: action.color}:{...f}
             )
 
             stateCopy[action.Houseid] = [...newColoredFloors]
@@ -84,12 +84,13 @@ export const floorReducer = (state: FloorStateType = initialState, action: Actio
 type ActionsType = ReturnType<typeof changeColorAC> | ReturnType<typeof addFloorAC> |AddHouseTypeAC |
     ReturnType<typeof changeColorFloorAC>
 
-export const addFloorAC = (Houseid: string, color: string, florsValue: number,door:boolean) => ({
+export const addFloorAC = (Houseid: string, color: string, florsValue: number,door:boolean,floorId:string) => ({
     type: 'ADD-FLOOR',
     Houseid,
     color,
     florsValue,
-    door
+    door,
+    floorId
 } as const)
 export const changeColorAC = (Houseid: string, color: string) => ({type: 'CHANGE-COLOR', Houseid, color} as const)
 export const changeColorFloorAC = (Houseid: string, color: string) => ({type: 'CHANGE-COLOR-FLOOR', Houseid, color} as const)
