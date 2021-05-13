@@ -46,7 +46,7 @@ export const housesReducer = (state: Array<HouseType> = initialState, action: Ac
 
         case 'REMOVE-HOUSE': {
 
-             return state.filter(h => h.houseID != action.houseID)
+             return state.filter(h => h.houseID !== action.houseID)
         }
 
         default:

@@ -6,14 +6,14 @@ import {addHouseAC, HouseType,} from "./state/houses-reducer";
 import Controls from "./Controls/Controls";
 import {v1} from "uuid";
 import {addFloorAC} from "./state/floor-reducer";
-import {useCallback, useEffect, useLayoutEffect, useState} from "react";
+import {useCallback, useEffect,  useState} from "react";
 
 function App() {
     const lastnum = useSelector<AppRootStateType, number>(state => state.houses[state.houses.length-1].houseNumber)
 
     useEffect(() => {
         setnumberHouse((lastnum+1))
-    }, [])
+    }, [lastnum])
 
     const [numberHouse, setnumberHouse] = useState(lastnum)
 
@@ -61,7 +61,7 @@ function App() {
                         let f = floors[h.houseID]
 
 
-                        return <House f={f} key={h.houseID}/>
+                        return <House f={f} houseNumber={h.houseNumber} key={h.houseID}/>
 
 
                     })

@@ -3,6 +3,7 @@ import Door from "./Door/Door";
 import styled from "styled-components";
 type PtopsType={
     color: string
+    houseNumber:number
 }
 function Hall(props:PtopsType) {
     const StyledHall = styled.div`
@@ -21,7 +22,7 @@ function Hall(props:PtopsType) {
     return (
         <StyledHall >
             <Window/>
-            <Door/>
+            <Door houseNumber={props.houseNumber}/>
         </StyledHall>
     );
 }

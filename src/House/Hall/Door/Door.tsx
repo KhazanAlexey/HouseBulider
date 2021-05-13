@@ -1,9 +1,12 @@
 import s from './Door.module.scss'
-
-function Door() {
+type PropsType={
+    houseNumber:number
+}
+function Door({houseNumber}:PropsType) {
     return (
 
         <div className={s.door}>
+           House№ <div className={s.number} >{houseNumber}</div>
         </div>
     );
 }

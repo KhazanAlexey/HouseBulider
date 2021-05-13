@@ -4,4 +4,13 @@
   background: white;
   border: 2px solid;
   align-self: flex-end;
+  align-items: center;
+  font-size: 9px;
+  position: relative;
+  .number{
+    position: absolute;
+    right: 0px;
+    font-size: 20px;
+    top: 10px;
+  }
 }

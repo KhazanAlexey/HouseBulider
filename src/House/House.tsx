@@ -7,6 +7,7 @@ import { FloorType} from "../state/floor-reducer";
 type PropsType = {
     key: any
     f: Array<FloorType>
+    houseNumber:number
 
 }
 
@@ -17,7 +18,7 @@ function House(props: PropsType) {
         <div className={style.house}>
             <Roof/>
             {props.f.map(f => {
-                    return f.door ?  <Hall  color={f.color}/>:<Floor key={f.Floorid} color={f.color}/>
+                    return f.door ?  <Hall houseNumber={props.houseNumber} color={f.color}/>:<Floor key={f.Floorid} color={f.color}/>
                        }
             )}
            

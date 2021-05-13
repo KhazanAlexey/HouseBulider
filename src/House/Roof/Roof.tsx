@@ -4,6 +4,7 @@ function Roof() {
     return (
 
        <div className={s.roof}>
+
        </div>
     );
 }

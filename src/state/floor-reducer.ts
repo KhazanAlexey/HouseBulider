@@ -43,7 +43,7 @@ export const floorReducer = (state: FloorStateType = initialState, action: Actio
             const stateCopy = {...state}
             let currentHouseFloors = stateCopy[action.Houseid];
             let newColoredFloors=currentHouseFloors.map(f=>
-                f.color=="white"? {...f,color: action.color}:{...f}
+                f.color==="white"? {...f,color: action.color}:{...f}
             )
 
             stateCopy[action.Houseid] = [...newColoredFloors]
