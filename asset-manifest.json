@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/HouseBulider/static/css/main.43cec47b.chunk.css",
+    "main.js": "/HouseBulider/static/js/main.c0a758db.chunk.js",
+    "main.js.map": "/HouseBulider/static/js/main.c0a758db.chunk.js.map",
+    "runtime-main.js": "/HouseBulider/static/js/runtime-main.a6d96e50.js",
+    "runtime-main.js.map": "/HouseBulider/static/js/runtime-main.a6d96e50.js.map",
+    "static/js/2.50735978.chunk.js": "/HouseBulider/static/js/2.50735978.chunk.js",
+    "static/js/2.50735978.chunk.js.map": "/HouseBulider/static/js/2.50735978.chunk.js.map",
+    "static/js/3.fc7ad132.chunk.js": "/HouseBulider/static/js/3.fc7ad132.chunk.js",
+    "static/js/3.fc7ad132.chunk.js.map": "/HouseBulider/static/js/3.fc7ad132.chunk.js.map",
+    "index.html": "/HouseBulider/index.html",
+    "static/css/main.43cec47b.chunk.css.map": "/HouseBulider/static/css/main.43cec47b.chunk.css.map",
+    "static/js/2.50735978.chunk.js.LICENSE.txt": "/HouseBulider/static/js/2.50735978.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a6d96e50.js",
+    "static/js/2.50735978.chunk.js",
+    "static/css/main.43cec47b.chunk.css",
+    "static/js/main.c0a758db.chunk.js"
+  ]
+}
