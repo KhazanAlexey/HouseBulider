@@ -74,7 +74,7 @@ export function Controls(props: Propstype) {
             <FloorsControl>
                 <HouseCount count={props.housenumber}/>
                 <SliderWithNum flors={floorsCount}/>
-                <SuperRange onChangeRange={onChangeRange} max={5} step={1} value={floors} min={1}/>
+                <SuperRange onChangeRange={onChangeRange} max={9} step={1} value={floors} min={1}/>
             </FloorsControl>
             <SuperSelect
                 options={arrColor}
