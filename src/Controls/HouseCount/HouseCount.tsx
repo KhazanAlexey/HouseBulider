@@ -12,10 +12,14 @@ export function HouseCount(props: Propstype) {
       margin: 0;
       padding: 0;
           `
+    const Title = styled.h4`
+      display: inline-block;
+      width: 100%;
+`;
 
     return (
         <StyledDiv>
-            <span>House {props.count}</span>
+            <Title><span>House {props.count}</span></Title>
         </StyledDiv>
     );
 }

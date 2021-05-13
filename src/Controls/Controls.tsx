@@ -7,12 +7,12 @@ import {AppRootStateType} from "../state/store";
 import {addFloorAC, changeColorAC, changeColorFloorAC, FloorType} from "../state/floor-reducer";
 import SuperSelect from "./utils/SuperSelect";
 import React from "react";
-import { v1 } from "uuid";
 import { removeHouseAC } from "../state/houses-reducer";
 
 type Propstype = {
     houseID: string
     housenumber: number
+    houseNumber:number
 }
 const arrColor = ['white', 'green', 'black', 'blue', 'red']
 const arrColorFloor = ['white', 'green', 'black', 'blue', 'red']
@@ -20,27 +20,31 @@ const arrColorFloor = ['white', 'green', 'black', 'blue', 'red']
 export function Controls(props: Propstype) {
     const StyledDiv = styled.div`
       width: 100%;
-      border: 1px solid;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
       position: relative;
-      @media screen and (max-width: 664px) {
+      @media screen and (max-width: 729px) {
         flex-direction: column;
+        .select{
+          width: 100px;
+        }
       }
           `
     const FloorsControl = styled.div`
-      width: 33%;
+      max-width: 100px;
+      min-width: 100px;
       height: 100%;
-      border: 1px solid;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
       margin-block-start: 0;
-      @media screen and (max-width: 664px) {
+      @media screen and (max-width: 729px) {
         width: 100%;
+        max-width: 100%;
+
       }
      
 
@@ -79,17 +83,17 @@ export function Controls(props: Propstype) {
         <StyledDiv>
 
             <FloorsControl>
-                <HouseCount count={props.housenumber}/>
+                <HouseCount count={props.houseNumber}/>
                 <SliderWithNum flors={floorsCount}/>
                 <SuperRange onChangeRange={onChangeRange} max={9} step={1} value={floorsCount} min={1}/>
 
             </FloorsControl>
-            <div><span>color house:</span> <SuperSelect
+            <div className={'select'}><span>color house:</span> <SuperSelect
                 options={arrColor}
                 value={floorColor}
                 onChangeOption={onChangeOption}
             /></div>
-            <div><span>color floor: </span><SuperSelect
+            <div className={'select'}><span>color floor: </span><SuperSelect
                 options={arrColorFloor}
                 value={houseColor}
                 onChangeOption={onChangeColorFloor}

@@ -7,6 +7,7 @@ import { FloorType} from "../state/floor-reducer";
 type PropsType = {
     key: any
     f: Array<FloorType>
+
 }
 
 function House(props: PropsType) {
