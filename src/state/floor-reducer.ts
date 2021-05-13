@@ -24,19 +24,20 @@ export const floorReducer = (state: FloorStateType = initialState, action: Actio
             const stateCopy = {...state}
             let currentHouseFloors = stateCopy[action.Houseid];
 
-           // let newColoredFloor= currentHouseFloors.map(f=>{if(f.color){
-           //     return{
-           //         ...f,color: action.color
-           //     }
-           // } else
-           //  return    { ...f}
-           // })
-            let newColoredFloor= currentHouseFloors.map(f=>{
-                    return{
-                        ...f,color: action.color
-                    }})
+            // let newColoredFloor= currentHouseFloors.map(f=>{if(f.color){
+            //     return{
+            //         ...f,color: action.color
+            //     }
+            // } else
+            //  return    { ...f}
+            // })
+            let newColoredFloor = currentHouseFloors.map(f => {
+                return {
+                    ...f, color: action.color
+                }
+            })
 
-            stateCopy[action.Houseid]=[...newColoredFloor]
+            stateCopy[action.Houseid] = [...newColoredFloor]
             return stateCopy
         }
         case 'ADD-HOUSE': {
@@ -52,11 +53,11 @@ export const floorReducer = (state: FloorStateType = initialState, action: Actio
             if (action.florsValue < currentHouseFloors.length) {
                 currentHouseFloors.shift()
 
-            } else  {
+            } else {
                 const newFloor: FloorType = {
                     Floorid: v1(),
                     color: '',
-                    door:action.door
+                    door: action.door
                 }
                 const floors = [newFloor, ...currentHouseFloors];
                 stateCopy[action.Houseid] = floors;
