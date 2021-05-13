@@ -59,6 +59,7 @@ export function Controls(props: Propstype) {
     const onChangeRange = (value: number) => {
         if (value < 1) {
             return;
+            
         }
 
         // early return
