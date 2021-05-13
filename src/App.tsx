@@ -33,7 +33,7 @@ function App() {
                     <div className={s.controls}>
                         {house.map((c,count) => {
 
-                          return  <Controls key={c.houseID} housenumber={count + 1} houseID={c.houseID}/>
+                          return  <Controls key={c.houseID}  housenumber={count + 1} houseID={c.houseID}/>
                         })}
 
 

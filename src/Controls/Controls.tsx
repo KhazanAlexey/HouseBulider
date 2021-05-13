@@ -8,6 +8,7 @@ import {addFloorAC, changeColorAC, changeColorFloorAC, FloorType} from "../state
 import SuperSelect from "./utils/SuperSelect";
 import React from "react";
 import { v1 } from "uuid";
+import { removeHouseAC } from "../state/houses-reducer";
 
 type Propstype = {
     houseID: string
@@ -71,6 +72,9 @@ export function Controls(props: Propstype) {
         dispatch(addFloorAC(props.houseID, "white", value, false))
         // dispatch(changeColorAC(props.houseID, houseColor))
     }
+    const delHouse=()=>{
+        dispatch(removeHouseAC(props.houseID))
+    }
     return (
         <StyledDiv>
 
@@ -91,7 +95,7 @@ export function Controls(props: Propstype) {
                 onChangeOption={onChangeColorFloor}
             /></div>
             <Buttonwrapper>
-                <button>X</button>
+                <button onClick={delHouse}>X</button>
             </Buttonwrapper>
         </StyledDiv>
     );

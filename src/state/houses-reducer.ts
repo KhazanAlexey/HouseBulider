@@ -44,9 +44,8 @@ export const housesReducer = (state: Array<HouseType> = initialState, action: Ac
         }
 
         case 'REMOVE-HOUSE': {
-            const copyState = {...state};
-            delete copyState[action.houseID];
-            return copyState;
+
+             return state.filter(h => h.houseID != action.houseID)
         }
 
         default:
