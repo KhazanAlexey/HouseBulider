@@ -21,7 +21,10 @@ function App() {
     const lastnum = useSelector<AppRootStateType, number>(state => state.houses[state.houses.length-1]?state.houses[state.houses.length-1].houseNumber:1)
 
     useEffect(() => {
-        setnumberHouse((lastnum))
+        if (lastnum==1){
+            setnumberHouse(lastnum)
+        } else
+        setnumberHouse((lastnum+1))
     }, [])
 
     const [numberHouse, setnumberHouse] = useState(lastnum)
