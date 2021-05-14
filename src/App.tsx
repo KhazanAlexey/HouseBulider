@@ -16,14 +16,13 @@ const Iconwrapper = styled.div`
   height: 20px;
   background-repeat: no-repeat;
   background-position: center;
-
 `
 function App() {
-    const lastnum = useSelector<AppRootStateType, number>(state => state.houses[state.houses.length-1].houseNumber)
+    const lastnum = useSelector<AppRootStateType, number>(state => state.houses[state.houses.length-1]?state.houses[state.houses.length-1].houseNumber:1)
 
     useEffect(() => {
-        setnumberHouse((lastnum+1))
-    }, [lastnum])
+        setnumberHouse((lastnum))
+    }, [])
 
     const [numberHouse, setnumberHouse] = useState(lastnum)
 

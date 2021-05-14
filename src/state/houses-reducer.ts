@@ -31,7 +31,7 @@ export const h2 = v1()
 
 
 const initialState: Array<HouseType> = [
-    {houseID: h1,houseNumber:1}
+    // {houseID: h1,houseNumber:1}
 ]
 
 
