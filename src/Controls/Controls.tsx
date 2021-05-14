@@ -9,49 +9,53 @@ import SuperSelect from "./utils/SuperSelect";
 import React, {useCallback} from "react";
 import {removeHouseAC} from "../state/houses-reducer";
 import {v1} from "uuid";
+import trashcan from '../icon/3844460-can-trash_110351.svg';
 
 type Propstype = {
     houseID: string
     houseNumber: number
 }
-const arrColor = ['white','orange', 'green', 'black', 'blue', 'red']
-const arrColorFloor = ['white','orange', 'green', 'black', 'blue', 'red']
-const floorId=v1()
+const arrColor = ['white', 'orange', 'green', 'black', 'blue', 'red']
+const arrColorFloor = ['white', 'orange', 'green', 'black', 'blue', 'red']
+const floorId = v1()
 const StyledDiv = styled.div`
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-      @media screen and (max-width: 729px) {
-        flex-direction: column;
-        .select {
-          width: 100px;
-        }
-      }
-    `;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  @media screen and (max-width: 729px) {
+    flex-direction: column;
+    .select {
+      width: 100px;
+    }
+  }
+`;
 const FloorsControl = styled.div`
-      max-width: 100px;
-      min-width: 100px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-      margin-block-start: 0;
-      @media screen and (max-width: 729px) {
-        width: 100%;
-        max-width: 100%;
-      }
-    `
+  max-width: 100px;
+  min-width: 100px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-block-start: 0;
+  @media screen and (max-width: 729px) {
+    width: 100%;
+    max-width: 100%;
+  }
+`
 const Buttonwrapper = styled.div`
-      margin: 3px;
-    `
-const Controls= (props: Propstype)=> {
-
-
-
+  margin: 3px;
+  background-image: url(${trashcan});
+  width: 30px;
+  height: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid;;
+`
+const Controls = (props: Propstype) => {
 
     const dispatch = useDispatch()
     const floorsCount = useSelector<AppRootStateType, Array<FloorType>>(state => state.floor[props.houseID]).length
@@ -60,29 +64,28 @@ const Controls= (props: Propstype)=> {
     ///set color house
     const onChangeOption = useCallback((col: string) => {
         dispatch(changeColorAC(props.houseID, col))
-    }, [props.houseID,dispatch])
+    }, [props.houseID, dispatch])
 
 
     ///set color floor
     const onChangeColorFloor = useCallback((col: string) => {
         dispatch(changeColorFloorAC(props.houseID, col))
-    }, [props.houseID,dispatch])
+    }, [props.houseID, dispatch])
 
     ///add or reduce floor
-    const onChangeRange =(value: number) => {
-            if (value < 1) {
-                return;
-            }
-
-            dispatch(addFloorAC(props.houseID, "white", value, false,floorId))
- // if you want all floors same color just use next line
-            // dispatch(changeColorAC(props.houseID, houseColor))
+    const onChangeRange = (value: number) => {
+        if (value < 1) {
+            return;
         }
-    ///removeHouse
-    const delHouse =useCallback(() => {
-        dispatch(removeHouseAC(props.houseID))
-    },[props.houseID,dispatch])
 
+        dispatch(addFloorAC(props.houseID, "white", value, false, floorId))
+        // if you want all floors same color just use next line
+        // dispatch(changeColorAC(props.houseID, houseColor))
+    }
+    ///removeHouse
+    const delHouse = useCallback(() => {
+        dispatch(removeHouseAC(props.houseID))
+    }, [props.houseID, dispatch])
 
 
     return (
@@ -104,13 +107,12 @@ const Controls= (props: Propstype)=> {
                 value={houseColor}
                 onChangeOption={onChangeColorFloor}
             /></div>
-            <Buttonwrapper>
-                <button onClick={delHouse}>X</button>
+            <Buttonwrapper onClick={delHouse}>
+                {/*<button  onClick={delHouse}>X</button>*/}
             </Buttonwrapper>
         </StyledDiv>
     );
 }
-
 
 
 export default Controls

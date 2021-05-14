@@ -7,7 +7,17 @@ import Controls from "./Controls/Controls";
 import {v1} from "uuid";
 import {addFloorAC} from "./state/floor-reducer";
 import { useEffect,  useState} from "react";
+import houseicon from "./icon/3643769-building-home-house-main-menu-start_113416.svg";
+import styled from "styled-components";
+const Iconwrapper = styled.div`
+  margin: 3px;
+  background-image: url(${houseicon});
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
 
+`
 function App() {
     const lastnum = useSelector<AppRootStateType, number>(state => state.houses[state.houses.length-1].houseNumber)
 
@@ -53,7 +63,7 @@ const floorId=v1()
 
                     </div>
                     <div className={s.footerControls}>
-                        <button onClick={addHouseHandler}>Build new house</button>
+                        <button onClick={addHouseHandler}><Iconwrapper></Iconwrapper>Build new house</button>
                     </div>
                 </div>
                 <div className={s.placeForHouses}>
