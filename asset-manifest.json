@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/HouseBulider/static/css/main.746a2fd1.chunk.css",
-    "main.js": "/HouseBulider/static/js/main.24e2f241.chunk.js",
-    "main.js.map": "/HouseBulider/static/js/main.24e2f241.chunk.js.map",
+    "main.js": "/HouseBulider/static/js/main.31128d4b.chunk.js",
+    "main.js.map": "/HouseBulider/static/js/main.31128d4b.chunk.js.map",
     "runtime-main.js": "/HouseBulider/static/js/runtime-main.a6d96e50.js",
     "runtime-main.js.map": "/HouseBulider/static/js/runtime-main.a6d96e50.js.map",
     "static/js/2.7f2f5326.chunk.js": "/HouseBulider/static/js/2.7f2f5326.chunk.js",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.a6d96e50.js",
     "static/js/2.7f2f5326.chunk.js",
     "static/css/main.746a2fd1.chunk.css",
-    "static/js/main.24e2f241.chunk.js"
+    "static/js/main.31128d4b.chunk.js"
   ]
 }
