@@ -11,7 +11,7 @@ export type FloorStateType = {
     [key: string]: Array<FloorType>
 }
 const initialState: FloorStateType = {
-[h1]: [{color:'',Floorid:h2,door:true}]
+// [h1]: [{color:'',Floorid:h2,door:true}]
 
 
 }
@@ -23,13 +23,7 @@ export const floorReducer = (state: FloorStateType = initialState, action: Actio
             const stateCopy = {...state}
             let currentHouseFloors = stateCopy[action.Houseid];
 
-            // let newColoredFloor= currentHouseFloors.map(f=>{if(f.color){
-            //     return{
-            //         ...f,color: action.color
-            //     }
-            // } else
-            //  return    { ...f}
-            // })
+
             let newColoredFloor = currentHouseFloors.map(f => {
                 return {
                     ...f, color: action.color
