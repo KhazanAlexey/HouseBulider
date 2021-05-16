@@ -50,6 +50,7 @@
         -moz-border-radius-topright: 3px;
         border-top-left-radius: 3px;
         border-top-right-radius: 3px;
+        overflow: hidden;
       }
 
       .controls {
@@ -70,8 +71,15 @@
         @extend .title
 
       }
-      button{
-        display: flex;flex-direction: row;flex-wrap: nowrap;justify-content: center;align-items: center;
+
+      button {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        line-height: 10px;
+        height: 50px;
       }
     }
 

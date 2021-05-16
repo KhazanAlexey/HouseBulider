@@ -47,7 +47,7 @@ const floorId=v1()
     return (
         <div className={s.App}>
             <header className={s.header}>
-                City Byilder
+                City Builder
             </header>
 
             <div className={s.body}>
@@ -57,12 +57,9 @@ const floorId=v1()
                     </div>
                     <div className={s.controls}>
                         {house.map((c) => {
-
                             return <Controls key={c.houseID} houseNumber={c.houseNumber}
                                              houseID={c.houseID}/>
                         })}
-
-
                     </div>
                     <div className={s.footerControls}>
                         <button onClick={addHouseHandler}><Iconwrapper></Iconwrapper>Build new house</button>
@@ -71,11 +68,7 @@ const floorId=v1()
                 <div className={s.placeForHouses}>
                     {house.map(h => {
                         let f = floors[h.houseID]
-
-
                         return <House key={h.houseID} f={f} houseNumber={h.houseNumber} />
-
-
                     })
                     }
                 </div>
