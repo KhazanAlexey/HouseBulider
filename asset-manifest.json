@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/HouseBulider/static/css/main.f2a6db34.chunk.css",
-    "main.js": "/HouseBulider/static/js/main.5778f1a5.chunk.js",
-    "main.js.map": "/HouseBulider/static/js/main.5778f1a5.chunk.js.map",
+    "main.js": "/HouseBulider/static/js/main.24e2f241.chunk.js",
+    "main.js.map": "/HouseBulider/static/js/main.24e2f241.chunk.js.map",
     "runtime-main.js": "/HouseBulider/static/js/runtime-main.a6d96e50.js",
     "runtime-main.js.map": "/HouseBulider/static/js/runtime-main.a6d96e50.js.map",
-    "static/js/2.edab68ba.chunk.js": "/HouseBulider/static/js/2.edab68ba.chunk.js",
-    "static/js/2.edab68ba.chunk.js.map": "/HouseBulider/static/js/2.edab68ba.chunk.js.map",
+    "static/js/2.7f2f5326.chunk.js": "/HouseBulider/static/js/2.7f2f5326.chunk.js",
+    "static/js/2.7f2f5326.chunk.js.map": "/HouseBulider/static/js/2.7f2f5326.chunk.js.map",
     "static/js/3.fc7ad132.chunk.js": "/HouseBulider/static/js/3.fc7ad132.chunk.js",
     "static/js/3.fc7ad132.chunk.js.map": "/HouseBulider/static/js/3.fc7ad132.chunk.js.map",
     "index.html": "/HouseBulider/index.html",
     "static/css/main.f2a6db34.chunk.css.map": "/HouseBulider/static/css/main.f2a6db34.chunk.css.map",
-    "static/js/2.edab68ba.chunk.js.LICENSE.txt": "/HouseBulider/static/js/2.edab68ba.chunk.js.LICENSE.txt",
+    "static/js/2.7f2f5326.chunk.js.LICENSE.txt": "/HouseBulider/static/js/2.7f2f5326.chunk.js.LICENSE.txt",
     "static/media/3643769-building-home-house-main-menu-start_113416.238d9bc6.svg": "/HouseBulider/static/media/3643769-building-home-house-main-menu-start_113416.238d9bc6.svg",
     "static/media/3844460-can-trash_110351.a309e0e4.svg": "/HouseBulider/static/media/3844460-can-trash_110351.a309e0e4.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.a6d96e50.js",
-    "static/js/2.edab68ba.chunk.js",
+    "static/js/2.7f2f5326.chunk.js",
     "static/css/main.f2a6db34.chunk.css",
-    "static/js/main.5778f1a5.chunk.js"
+    "static/js/main.24e2f241.chunk.js"
   ]
 }
