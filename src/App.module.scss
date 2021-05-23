@@ -35,6 +35,9 @@
       align-self: flex-start;
       box-sizing: border-box;
 
+      background-color: #bbbaba;
+
+
       @media screen and (max-width: 363px) {
         width: 100%;
       }
@@ -46,16 +49,14 @@
         background-color: #bbbaba;
         line-height: 40px;
         padding: 0 0 0 20px;
-        -moz-border-radius-topleft: 3px;
-        -moz-border-radius-topright: 3px;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-        overflow: hidden;
+
       }
 
       .controls {
         display: flex;
         flex-direction: column;
+        background-color: white;
+
       }
 
       .footerControls {
