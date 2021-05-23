@@ -40,6 +40,13 @@
 
       @media screen and (max-width: 363px) {
         width: 100%;
+        overflow: visible;
+
+      }
+      @media screen and (max-width: 904px) {
+        width: 100%;
+        overflow: visible;
+
       }
 
       .title {
