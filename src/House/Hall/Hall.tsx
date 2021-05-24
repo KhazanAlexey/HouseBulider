@@ -1,29 +1,35 @@
 import Window from "../Floor/Window/Window";
 import Door from "./Door/Door";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import React from "react";
-type PtopsType={
+import {AnimationS} from "../../animation/breathAnimation";
+
+type PtopsType = {
     color: string
-    houseNumber:number
+    houseNumber: number
 }
 
 
-const Hall=React.memo(function (props:PtopsType) {
+const Hall = React.memo(function (props: PtopsType) {
+
+    const breatheAnimation = AnimationS(props.color)
     const StyledHall = styled.div`
       width: 200px;
-      height: 100px;  
-      background: ${props.color};;
+      height: 100px;
       border-right: 3px solid black;
       border-left: 3px solid black;
-      border-bottom:3px solid black;
-
+      border-bottom: 3px solid black;
       display: flex;
+      background: ${props.color};
       flex-direction: row;
       justify-content: space-around;
       align-items: center;
-          `
+      animation-name: ${breatheAnimation};
+      animation-duration: 8s;
+      //opacity: 50%;
+    `
     return (
-        <StyledHall >
+        <StyledHall>
             <Window/>
             <Door houseNumber={props.houseNumber}/>
         </StyledHall>
