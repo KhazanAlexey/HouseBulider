@@ -15,7 +15,7 @@ data to localstorage and retrieve on page load.
 - Change color per floor
 - Add some nice animation/transitions
 <div class="border rounded-2 repository-og-image js-repository-image-container" style="background-image: url('https://repository-images.githubusercontent.com/367005090/4e1aae00-b465-11eb-875a-b56ac55a7b1c')"></div>
-
+<img url('https://repository-images.githubusercontent.com/367005090/4e1aae00-b465-11eb-875a-b56ac55a7b1c')/>
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
