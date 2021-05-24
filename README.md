@@ -11,8 +11,9 @@ color, number of floors, name of a house. Add possibility to add/remove/duplicat
 data to localstorage and retrieve on page load.
 - Change color per floor
 - adaptive design
- stack: React, Redux, Styled Components, scss,module css
-<div class="border rounded-2 repository-og-image js-repository-image-container" style="background-image: url('https://repository-images.githubusercontent.com/367005090/4e1aae00-b465-11eb-875a-b56ac55a7b1c')"></div>
+ # stack:
+ React, Redux, Styled Components, scss,module css,typescript
+
 <img src='https://repository-images.githubusercontent.com/367005090/4e1aae00-b465-11eb-875a-b56ac55a7b1c'/>
 # Getting Started with Create React App
 
