@@ -3,6 +3,10 @@ Start app https://khazanalexey.github.io/HouseBulider/
 Description:
 City Builder component/module takes some input data to build houses. You may change color, number
 of floors, name of a house as well as remove, duplicate or add new houses.
+Show modal on hover a house to see the house number.
+Change color per floor.
+Rotate window on hover.
+
 
 
  # stack:
