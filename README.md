@@ -3,17 +3,15 @@ Start app https://khazanalexey.github.io/HouseBulider/
 Description:
 City Builder component/module takes some input data to build houses. You may change color, number
 of floors, name of a house as well as remove, duplicate or add new houses.
-Requirements:
-- tech stack: React, Redux, Styled Components
-- use git repository (structure your commits properly)
-- performance oriented, scalable and open to new functionality
+
 //////////////
 ####Technical task:
 Create React component “CityBuilder” which takes input data to build houses. Add possibility to change
 color, number of floors, name of a house. Add possibility to add/remove/duplicate a house. Save city
 data to localstorage and retrieve on page load.
 - Change color per floor
-- Add some nice animation/transitions
+- adaptive design
+ stack: React, Redux, Styled Components, scss,module css
 <div class="border rounded-2 repository-og-image js-repository-image-container" style="background-image: url('https://repository-images.githubusercontent.com/367005090/4e1aae00-b465-11eb-875a-b56ac55a7b1c')"></div>
 <img src='https://repository-images.githubusercontent.com/367005090/4e1aae00-b465-11eb-875a-b56ac55a7b1c'/>
 # Getting Started with Create React App
