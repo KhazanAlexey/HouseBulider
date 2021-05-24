@@ -64,7 +64,10 @@ const floorId=v1()
                     <div className={s.footerControls}>
                         <button onClick={addHouseHandler}><Iconwrapper></Iconwrapper>Build new house</button>
                     </div>
+                    <p>* Hover on house to see number</p>
+                    <p>* Hover on window to see animation:)</p>
                 </div>
+
                 <div className={s.placeForHouses}>
                     {house.map(h => {
                         let f = floors[h.houseID]
@@ -72,7 +75,10 @@ const floorId=v1()
                     })
                     }
                 </div>
+
             </div>
+
+
         </div>
     );
 }

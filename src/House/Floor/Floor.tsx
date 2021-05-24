@@ -9,6 +9,7 @@ type Propstype = {
 
 const  Floor=React.memo(function (props: Propstype){
 
+    
     const breatheAnimation = AnimationS(props.color)
     const StyledDiv = styled.div`
       width: 200px;
@@ -29,6 +30,7 @@ const  Floor=React.memo(function (props: Propstype){
             <Window/>
             <Window/>
         </StyledDiv>
+
     );
 
 

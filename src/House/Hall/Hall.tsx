@@ -23,10 +23,9 @@ const Hall = React.memo(function (props: PtopsType) {
       background: ${props.color};
       flex-direction: row;
       justify-content: space-around;
-      align-items: center;
+      align-items: center;    
       animation-name: ${breatheAnimation};
       animation-duration: 8s;
-      //opacity: 50%;
     `
     return (
         <StyledHall>
