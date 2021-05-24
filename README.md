@@ -4,13 +4,7 @@ Description:
 City Builder component/module takes some input data to build houses. You may change color, number
 of floors, name of a house as well as remove, duplicate or add new houses.
 
-//////////////
-####Technical task:
-Create React component “CityBuilder” which takes input data to build houses. Add possibility to change
-color, number of floors, name of a house. Add possibility to add/remove/duplicate a house. Save city
-data to localstorage and retrieve on page load.
-- Change color per floor
-- adaptive design
+
  # stack:
  React, Redux, Styled Components, scss,module css,typescript
 
